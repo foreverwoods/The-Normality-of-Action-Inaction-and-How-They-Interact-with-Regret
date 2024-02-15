@@ -1,13 +1,10 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
-author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: LINK."
+title: "The Social Norms behind Inaction and Why Remaining Stagnant Can Make You Regret"
+author: Janssen Myer Rambaud
+thanks: "Code and data are available at: https://github.com/foreverwoods/The-Normality-of-Action-Inaction-and-How-They-Interact-with-Regret; Replication on Social Science Reproduction platform available at: "
 date: today
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "The general idea regarding the concept of regret can be summarized with the famous phrase of 'Don't do something you may regret'. This paper aims to tackle this misconceived notion by presenting inaction."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -19,122 +16,37 @@ bibliography: references.bib
 #| message: false
 
 library(tidyverse)
-library(palmerpenguins)
-```
 
+```
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. We use @citeR and @rohan.
+As humans, we are all familiar with the general feeling of regret. For the most part these regrets are caused by mistakes on our part, but other times, they can also be the result of not taking action. The saying, 'hindsight is 20/20', is one specific example that can be attributed to this feeling of regret. Before diving deeper into this topic, it is best to begin with a definition of regret and inaction. According to psychology and behaviour scholar Marcel Zeelenberg, regret is defined as, "the negative, cognitively based emotion that we experience when realizing or imagining that our present situation would have been better had we acted differently" (Roos 2023) While inaction can be defined simply as not taking action or not acting upon something. This here drives a question of why, as humans, feel that way. Researcher Gilad Feldman interprets this feeling to be influenced by normality, specifically, societal norms in general (Feldman 2019).
 
-The remainder of this paper is structured as follows. @sec-data....
+Diving deeper into this topic, it is actually possible to look into what can attribute to a 'quantifiable' amount of regret. This can be called 'perceived regret'. While it is true that every person will feel a different level of regret, and even then, it would be difficult to express just how much 'regret' one has, it would be wise to gather a fairly larger group of people to tackle the possible problem of bias. As such, multiple experiments were conducted by Feldman under a simple question and rating system. This is where the calculation of perceived regret is conducted. The participants were provided scenarios and asked questions pertaining a particular party in the scenario and what they believe their 'perceived regret' is.
 
+By presenting a fixed scenario in these experiments, each participant can answer in a more rational, yet personalized manner. If you were to ask them to recall their own experiences for the sake of gathering a variety of responses/scenarios, the data could possibly be all over the place. Each person has their own experiences, some consisting of extreme regret, while others do not. These are problems that could possibly influence the data in some manner. It is important to consider this idea of inaction because it is something that we do in our lives, and something we will continue to do as we go on in life. I am looking to validate Feldman's claims that normality plays a crucial role in impacting the perception of regret. The research was studied on undergraduate Hong Kong students as well as hired MTurk participants. The estimand in question is the perceived regret that stems from inaction and how societal norms come into play. This paper aims to follow a reproduction of Feldman's research and findings, but dwell deeper onto the side of inaction and norm theory rather than the comparison between action and inaction.
 
 
 # Data {#sec-data}
 
-Some of our data is of penguins (@fig-bills), from @palmerpenguins.
-
-```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
-#| echo: false
-
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
-```
-
-Talk more about it.
-
-And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
-
-```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
-#| echo: false
-#| warning: false
-#| message: false
-
-analysis_data <- read_csv(here::here("data/analysis_data/analysis_data.csv"))
-
-analysis_data |> 
-  ggplot(aes(x = width, y = length)) +
-  geom_point(alpha = 0.8) +
-  theme_minimal() +
-  labs(x = "Wing width (mm)",
-       y = "Wing length (mm)")
-```
-
-Talk way more about it. 
-
+Using R from @citeR as the programming language, we can conduct research based on the research provided by Gilad Feldman in his journal article, "What is normal? Dimensions of action-inaction normality and their impact on regret in the action-effect" (@feldmanRegrets) as well as the data from the experiments (@feldmanDataset), we can dive deeper into the concept of inaction. Other articles were also used, such as @regretDefinition in order to give a sound understanding to our topic.
 
 
 # Model
 
 The goal of our modelling strategy is twofold. Firstly,...
 
-Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
-
+Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in 
 ## Model set-up
 
-Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
-
-\begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
-\alpha &\sim \mbox{Normal}(0, 2.5) \\
-\beta &\sim \mbox{Normal}(0, 2.5) \\
-\gamma &\sim \mbox{Normal}(0, 2.5) \\
-\sigma &\sim \mbox{Exponential}(1)
-\end{align}
-
-We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
 
 
 ### Model justification
 
-We expect a positive relationship between the size of the wings and time spent aloft. In particular...
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
 
 
 # Results
-
-Our results are summarized in @tbl-modelresults.
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-library(rstanarm)
-
-first_model <-
-  readRDS(file = here::here("models/first_model.rds"))
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| label: tbl-modelresults
-#| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
-#| warning: false
-
-modelsummary::modelsummary(
-  list(
-    "First model" = first_model
-  ),
-  statistic = "mad",
-  fmt = 2
-)
-```
-
 
 
 
@@ -142,7 +54,7 @@ modelsummary::modelsummary(
 
 ## First discussion point {#sec-first-point}
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
+If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this.
 
 ## Second discussion point
 
@@ -156,8 +68,7 @@ Weaknesses and next steps should also be included.
 
 \appendix
 
-# Appendix {-}
-
+# Appendix {.unnumbered}
 
 # Additional data details
 
@@ -165,57 +76,10 @@ Weaknesses and next steps should also be included.
 
 ## Posterior predictive check
 
-In @fig-ppcheckandposteriorvsprior-1 we implement a posterior predictive check. This shows...
-
-In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. This shows... 
-
-```{r}
-#| eval: true
-#| echo: false
-#| message: false
-#| warning: false
-#| label: fig-ppcheckandposteriorvsprior
-#| layout-ncol: 2
-#| fig-cap: "Examining how the model fits, and is affected by, the data"
-#| fig-subcap: ["Posterior prediction check", "Comparing the posterior with the prior"]
-
-pp_check(first_model) +
-  theme_classic() +
-  theme(legend.position = "bottom")
-
-posterior_vs_prior(first_model) +
-  theme_minimal() +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "bottom") +
-  coord_flip()
-```
 
 ## Diagnostics
-
-@fig-stanareyouokay-1 is a trace plot. It shows... This suggests...
-
-@fig-stanareyouokay-2 is a Rhat plot. It shows... This suggests...
-
-```{r}
-#| echo: false
-#| eval: true
-#| message: false
-#| warning: false
-#| label: fig-stanareyouokay
-#| fig-cap: "Checking the convergence of the MCMC algorithm"
-#| fig-subcap: ["Trace plot", "Rhat plot"]
-#| layout-ncol: 2
-
-plot(first_model, "trace")
-
-plot(first_model, "rhat")
-```
-
 
 
 \newpage
 
-
 # References
-
-

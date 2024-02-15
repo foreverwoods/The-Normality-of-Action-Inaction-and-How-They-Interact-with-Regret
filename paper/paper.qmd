@@ -4,7 +4,7 @@ author: Janssen Myer Rambaud
 thanks: "Code and data are available at: https://github.com/foreverwoods/The-Normality-of-Action-Inaction-and-How-They-Interact-with-Regret; Replication on Social Science Reproduction platform available at: "
 date: today
 date-format: long
-abstract: "The general idea regarding the concept of regret can be summarized with the famous phrase of 'Don't do something you may regret'. This paper aims to tackle this misconceived notion by presenting inaction."
+abstract: "The general idea regarding the concept of regret can be summarized with the famous phrase of 'Don't do something you may regret'. Through experiments conducted by Gilad Feldman, where participants were given a scenario in which they responded with a scaled level of how they perceived regret in said scenario, there was evidence that hinted at a correlation between inaction, perceived regret and societal norms. As humans we tend to be cautious in our actions and at times be too hesitant in making a move in which we will later regret. This paper aims to address this rather undiscussed topic and why understanding more about societal norms and how it affects our inaction can help achieve greater understanding about why we feel regret."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -16,7 +16,7 @@ bibliography: references.bib
 #| message: false
 
 library(tidyverse)
-
+library(knitr)
 ```
 
 # Introduction
@@ -27,38 +27,23 @@ Diving deeper into this topic, it is actually possible to look into what can att
 
 By presenting a fixed scenario in these experiments, each participant can answer in a more rational, yet personalized manner. If you were to ask them to recall their own experiences for the sake of gathering a variety of responses/scenarios, the data could possibly be all over the place. Each person has their own experiences, some consisting of extreme regret, while others do not. These are problems that could possibly influence the data in some manner. It is important to consider this idea of inaction because it is something that we do in our lives, and something we will continue to do as we go on in life. I am looking to validate Feldman's claims that normality plays a crucial role in impacting the perception of regret. The research was studied on undergraduate Hong Kong students as well as hired MTurk participants. The estimand in question is the perceived regret that stems from inaction and how societal norms come into play. This paper aims to follow a reproduction of Feldman's research and findings, but dwell deeper onto the side of inaction and norm theory rather than the comparison between action and inaction.
 
-
 # Data {#sec-data}
 
 Using R from @citeR as the programming language, we can conduct research based on the research provided by Gilad Feldman in his journal article, "What is normal? Dimensions of action-inaction normality and their impact on regret in the action-effect" (@feldmanRegrets) as well as the data from the experiments (@feldmanDataset), we can dive deeper into the concept of inaction. Other articles were also used, such as @regretDefinition in order to give a sound understanding to our topic.
 
+From here, the usage of two datasets from the original usage will be put to work. In a successful attempt to recreate the original table, I was able to clean the raw data to align with the original report. This means that for having an Action, Inaction, and Control norms, when considering the past behaviour {Action was taken, or Inaction}, we can arrive at the mean and the standard deviation between the two categories.
 
-# Model
+This paper will make use of both experiment 2 and experiment 3 and their provided data. These population groups are specifically MTurk hires who are separate from each other, i.e. experiment 2 participants are not allowed to participate in experiment 3. 
 
-The goal of our modelling strategy is twofold. Firstly,...
+Experiment 2 consisted of 300 American hires, with a mean age of 36.58. This experiment incorporated a use of a control in order to make comparisons without the influence of societal norms.
 
-Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in 
-## Model set-up
-
-
-
-### Model justification
-
-
-
+Experiment 3 consisted of 303 American hires, with a mean age of 36.66. This experiment did not make use of social norms, but instead focused on expectations and past-behavioural tendencies. 
 # Results
 
 
+(@tbl-regretvalues)
 
 # Discussion
-
-## First discussion point {#sec-first-point}
-
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this.
-
-## Second discussion point
-
-## Third discussion point
 
 ## Weaknesses and next steps
 
@@ -70,15 +55,17 @@ Weaknesses and next steps should also be included.
 
 # Appendix {.unnumbered}
 
-# Additional data details
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-regretvalues
+#| tbl-cap: "Perceived regret in relation to past behaviour"
 
-# Model details {#sec-model-details}
+exp2_table <- read_csv("../data/analysis_data/exp2_tibble.csv")
 
-## Posterior predictive check
-
-
-## Diagnostics
-
+exp2_table |>
+  kable(table.attr = "style='width:50%;'")
+```
 
 \newpage
 

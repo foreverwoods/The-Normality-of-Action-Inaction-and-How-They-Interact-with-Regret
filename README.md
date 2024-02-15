@@ -15,6 +15,7 @@ The repo is structured as:
 -   `model` contains fitted models. 
 -   `paper` contains the files used to generate the paper, including the Quarto document and reference bibliography file, as well as the PDF of the paper. 
 -   `scripts` contains the R scripts used to simulate, download and clean data.
+-   `sketches` contains the sketches of the graphs and table contained in the document.
 
 
 ## Statement on LLM usage

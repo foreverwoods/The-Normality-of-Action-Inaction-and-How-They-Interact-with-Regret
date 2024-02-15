@@ -29,7 +29,7 @@ By presenting a fixed scenario in these experiments, each participant can answer
 
 # Data {#sec-data}
 
-Using R from @citeR as the programming language, we can conduct research based on the research provided by Gilad Feldman in his journal article, "What is normal? Dimensions of action-inaction normality and their impact on regret in the action-effect" (@feldmanRegrets) as well as the data from the experiments (@feldmanDataset), we can dive deeper into the concept of inaction. Other articles were also used, such as @regretDefinition in order to give a sound understanding to our topic.
+Using R from @citeR as the programming language, we can conduct research based on the research provided by Gilad Feldman in his journal article, "What is normal? Dimensions of action-inaction normality and their impact on regret in the action-effect" (@feldmanRegrets) as well as the data from the experiments (@feldmanDataset), we can dive deeper into the concept of inaction. Other articles were also used, such as @regretDefinition in order to give a sound understanding to our topic. The packages used in this paper include: Knitr @citeKnitr and Tidyverse @citeTidyverse.
 
 From here, the usage of two datasets from the original usage will be put to work. In a successful attempt to recreate the original table, I was able to clean the raw data to align with the original report. This means that for having an Action, Inaction, and Control norms, when considering the past behaviour {Action was taken, or Inaction}, we can arrive at the mean and the standard deviation between the two categories.
 
@@ -39,21 +39,34 @@ Experiment 2 consisted of 300 American hires, with a mean age of 36.58. This exp
 
 Experiment 3 consisted of 303 American hires, with a mean age of 36.66. This experiment did not make use of social norms, but instead focused on expectations and past-behavioural tendencies. 
 # Results
+Starting with the reproduction of the table in Experiment 2, you can see that 
 
+Table (@tbl-regretvalues) shows the significance of social norms in the experiment.
+In order for the data to fit, the headings of this table have to be abbreviated.
+M = mean, SD = Standard Deviation, N = number (count)
+AP = Action Past
+IP = Inaction Past
+Bvr = Behaviour
 
-(@tbl-regretvalues)
+![Reproduction Plot]("../data/analysis_data/plot.png") shows the significance of expectations in the experiment.
 
 # Discussion
 
-## Weaknesses and next steps
+Through analyzing the table and data the clear numbers that stick out are inaction. Whether it is inaction compared compared to the control, there is always a jump in perceived regret from action to inaction. What does this really mean then? It speaks on the significance of Inaction itself and that it may be the more important thing to discuss. There are times where we are hesitant to take action, maybe it is out of fear, or embarrassment, which is where we fall to that inaction step. These results show an indication that one could feel more regret by remaining inactive. In every scenario of these experiments it supports that statement. It may be time to consider taking that step and taking action because whatever you feel at that moment could be the better outcome than the regret you will feel for not taking that step afterwards.
 
-Weaknesses and next steps should also be included.
+
+## Limitations
+As this was a reproduction from a previous paper, it's difficult to cover entirely new grounds/topics as opposed to just honing on a specific topic. The original author covered all of the bases and conducted a thorough four experiments to arrive at their conclusions, touching bases on a variety of statistical concepts. If there was a big limitation, it could generally be appointed towards the population group. The more participants there are, the more data we can expect to have. 
+
+## Future Thoughts
+It is possible that if you run these experiments again with a much larger group from a various age groups, possibly ranging from younger students to more elderly in the population, would you expect to see similar results? There may also be the factor of local culture, does the impact of social norms differ if you were to conduct these experiments in a different country as opposed to primarily having American participants? There are a lot of things to think about, but overall, the current research has already arrived at some meaningful and plausible ideas.
 
 \newpage
 
 \appendix
 
 # Appendix {.unnumbered}
+Reproduction Data
 
 ```{r}
 #| echo: false
@@ -66,6 +79,9 @@ exp2_table <- read_csv("../data/analysis_data/exp2_tibble.csv")
 exp2_table |>
   kable(table.attr = "style='width:50%;'")
 ```
+
+
+![Action/Inaction Expectations in Correlation to Perceived Regret]("../data/analysis_data/plot.png")
 
 \newpage
 
